@@ -7,11 +7,16 @@ import { AuthContext } from "../../context/AuthContext";
 export default function Topbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  function logout(){
+    localStorage.clear();
+        window.location.href = '/login';
+  }
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Lamasocial</span>
+          <span className="logo">FanField</span>
         </Link>
       </div>
       <div className="topbarCenter">
@@ -20,23 +25,34 @@ export default function Topbar() {
           <input
             placeholder="Search for friend, post or video"
             className="searchInput"
+               
           />
         </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="topbarLink">Homepage</span>
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="topbarLink">Timeline</span>
+        </Link>
+        <button onClick={logout} className="topbarLogout">
+          <span className="">Logout</span>
+          </button>
         </div>
+
         <div className="topbarIcons">
           <div className="topbarIconItem">
             <Person />
             <span className="topbarIconBadge">1</span>
           </div>
-          <div className="topbarIconItem">
+          {/*<div className="topbarIconItem">*/}
+          <Link to={"/messenger"} className="topbarIconItem">
             <Chat />
             <span className="topbarIconBadge">2</span>
-          </div>
+          </Link>
+          {/*</div>*/}
           <div className="topbarIconItem">
             <Notifications />
             <span className="topbarIconBadge">1</span>

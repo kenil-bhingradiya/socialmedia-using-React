@@ -82,3 +82,8 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.logo{
+  width:200px;
+  height:200px;
+}

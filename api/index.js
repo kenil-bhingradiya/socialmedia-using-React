@@ -8,33 +8,20 @@ const multer = require("multer");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const conversationRoute = require("./routes/conversations");
+const messageRoute = require("./routes/messages");
 const router = express.Router();
 const path = require("path");
 
 dotenv.config();
-require('dotenv').config()
 
-// mongoose.connect(
-//   process.env.MONGO_URL,
-//   { useNewUrlParser: true, useUnifiedTopology: true },
-//   () => {
-//     console.log("Connected to MongoDB");
-//   }
-// );
 mongoose.connect(
   process.env.MONGODB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Connected to MongoDB");
+  }
 );
-const dbobject = mongoose.connection;
-
-dbobject.on("connected", () => {
-  console.log("Mongo DB Connection Success...");
-});
-dbobject.on("error", () => {
-  console.log("Mongo DB Connection Failed...");
-});
-
-module.exports = mongoose;
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middleware
@@ -63,6 +50,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messageRoute);
 
 app.listen(8800, () => {
   console.log("Backend server is running!");

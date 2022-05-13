@@ -4,10 +4,14 @@ import "./register.css";
 import { useHistory } from "react-router";
 
 export default function Register() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const username = useRef();
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
+  const city = useRef();
+  const from = useRef();
+  const relationship = useRef();
   const history = useHistory();
 
   const handleClick = async (e) => {
@@ -19,6 +23,9 @@ export default function Register() {
         username: username.current.value,
         email: email.current.value,
         password: password.current.value,
+        city: "",
+        from: "",
+        relationship: 0,
       };
       try {
         await axios.post("/auth/register", user);
@@ -33,9 +40,10 @@ export default function Register() {
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+        <img className="logo" src={PF + "person/logo.png"} />
+          <h3 className="loginLogo">FanField</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on FanField.
           </span>
         </div>
         <div className="loginRight">
@@ -71,8 +79,9 @@ export default function Register() {
             <button className="loginButton" type="submit">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            
           </form>
+          <button onClick={()=>history.push("/login")} className="loginRegisterButton">Log into Account</button>
         </div>
       </div>
     </div>

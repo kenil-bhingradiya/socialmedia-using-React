@@ -100,3 +100,12 @@
 .rightbarFollowButton:focus{
   outline: none;
 }
+
+.rightbareditprofile{
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+  background-color: grey;
+  color: black;
+  cursor: pointer;
+}

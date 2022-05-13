@@ -15,6 +15,7 @@ export default function Rightbar({ user }) {
     currentUser.followings.includes(user?.id)
   );
 
+
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -65,6 +66,8 @@ export default function Rightbar({ user }) {
     );
   };
 
+  
+
   const ProfileRightbar = () => {
     return (
       <>
@@ -74,22 +77,26 @@ export default function Rightbar({ user }) {
             {followed ? <Remove /> : <Add />}
           </button>
         )}
+        <Link to={`/update/${user.username}`} style={{ textDecoration: "none" }}>
+          <button className="rightbareditprofile">edit profile</button>
+        </Link>
+        <div className="rightbarTitle">{''}</div>
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user.city}</span>
+            <span className="rightbarInfoValue"> {user.city?user.city:"not defined"}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            <span className="rightbarInfoValue">{user.from?user.from:"not defined"}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
             <span className="rightbarInfoValue">
               {user.relationship === 1
                 ? "Single"
-                : user.relationship === 1
+                : user.relationship === 2
                 ? "Married"
                 : "-"}
             </span>

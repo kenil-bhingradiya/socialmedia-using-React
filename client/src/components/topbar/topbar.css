@@ -57,8 +57,10 @@
 }
 
 .topbarLink {
-  margin-right: 10px;
-  font-size: 14px;
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
   cursor: pointer;
 }
 
@@ -69,6 +71,7 @@
 .topbarIconItem {
   margin-right: 15px;
   cursor: pointer;
+  color: white;
   position: relative;
 }
 
@@ -93,4 +96,19 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.topbarLogout{
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+  background-color: #1775ee;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px)  {
+  .topbarLink{
+    display: none;
+  }
 }
